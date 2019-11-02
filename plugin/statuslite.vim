@@ -1,3 +1,13 @@
+" Location:     plugin/statuslite.vim
+" Author:       thomasjlsn (https://github.com/thomasjlsn)
+" Version:      0.1
+" License:      Same as Vim itself.  See :help license
+
+if exists('g:loaded_statuslite') || &cp
+  finish
+endif
+let g:loaded_statuslite = 1
+
 if has('statusline')
   set t_Co=256
 
@@ -9,11 +19,11 @@ if has('statusline')
   " Always show the status line
   set laststatus=2
 
-  set statusline=%1*\ %n\              " buffer #
-  set statusline+=%2*%(%r%m\ %)%1*     " flags
-  set statusline+=%3*\ %(☰\ %)%l/%L    " line #/lines
-  set statusline+=\ \|\ %v             " column #
-  set statusline+=\ %4*\ %=            " Split L && R
-  set statusline+=%3*\ %t\             " File-name
-  set statusline+=%1*\ %y\             " File-type
+  set statusline=%1*\ %n\              " Buffer #
+  set statusline+=%2*%(%r%m\ %)%1*     " Flags
+  set statusline+=%3*\ %(☰\ %)%l/%L    " Line #/lines
+  set statusline+=\ \|\ %v             " Column #
+  set statusline+=\ %4*\ %=            " Split L & R
+  set statusline+=%3*\ %t\             " File name
+  set statusline+=%1*\ %y\             " File type
 endif
