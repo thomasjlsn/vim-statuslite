@@ -9,46 +9,25 @@ endif
 let g:loaded_statuslite = 1
 
 if has('statusline')
-  set t_Co=256
+  if &t_Co !=# 256
+    set t_Co=256
+  endif
 
-  hi User1 cterm=bold ctermfg=254 ctermbg=234
-  hi User2 cterm=bold ctermfg=160 ctermbg=234
-  hi User3 cterm=none ctermfg=254 ctermbg=237
-  hi User4 cterm=none ctermfg=254 ctermbg=240
-  hi User5 cterm=bold ctermfg=254 ctermbg=234
-
-  function! GetMode()
-    let s:currentmode = mode()
-
-    hi User5 cterm=bold ctermfg=254 ctermbg=234
-    let s:mode_name='NORMAL'
-
-    if s:currentmode ==? 'r'
-      hi User5 cterm=bold ctermfg=254 ctermbg=5
-      let s:mode_name='REPLACE'
-    elseif s:currentmode ==? 'v'
-      hi User5 cterm=bold ctermfg=254 ctermbg=4
-      let s:mode_name='VISUAL'
-    elseif s:currentmode ==? 'i'
-      hi User5 cterm=bold ctermfg=254 ctermbg=2
-      let s:mode_name='INSERT'
-    endif
-
-    return s:mode_name
-  endfunction
+  hi User1 cterm=bold ctermfg=254   ctermbg=234
+  hi User2 cterm=none ctermfg=254   ctermbg=237
+  hi User3 cterm=none ctermfg=254   ctermbg=240
+  hi User4 cterm=bold ctermfg=1     ctermbg=234
+  hi User5 cterm=bold ctermfg=2     ctermbg=234
+  hi User6 cterm=bold ctermfg=5     ctermbg=234
 
   " Always show the status line
   set laststatus=2
 
-  set statusline=%5*\ %{GetMode()}\     " Mode indicator
-  set statusline+=%1*%(\ ☰\ %)          " Lines icon
-  set statusline+=%l/%L                 " Line #/lines
-  set statusline+=\ \|                  " Seperator
-  set statusline+=%(\ %v\ %)            " Column #
-  set statusline+=%3*%(\ %t\ %)         " File name
-  set statusline+=%4*%=                 " Split L & R
-  set statusline+=%3*%(\ %{&ff}\ %)     " File format
-  set statusline+=%3*%(%{&fenc}\ %)     " File encoding
-  set statusline+=%2*%(\ %h%w%r%m%)%1*  " Flags
-  set statusline+=%1*%(\ %y\ %)         " File type
+  set statusline=%1*\ ☰\ %l/%L      " Lines icon & line #/lines total
+  set statusline+=\:%v\ %4*%(%r\ %) " Column # & readonly warning
+  set statusline+=%2*\ %t\          " File name
+  set statusline+=%3*%=             " Split L & R
+  set statusline+=%2*\ %{&ff}\      " File format
+  set statusline+=%{&fenc}\         " File encoding
+  set statusline+=%1*%(\ %6*%w%5*%h%4*%m%1*%y\ %) " Flags & file type
 endif
