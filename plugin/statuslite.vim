@@ -19,11 +19,13 @@ if has('statusline')
   " Always show the status line
   set laststatus=2
 
-  set statusline=%1*\ %n\              " Buffer #
+  set statusline=%1*%(\ %n\ %)         " Buffer #
   set statusline+=%2*%(%r%m\ %)%1*     " Flags
-  set statusline+=%3*\ %(☰\ %)%l/%L    " Line #/lines
-  set statusline+=\ \|\ %v             " Column #
-  set statusline+=\ %4*\ %=            " Split L & R
-  set statusline+=%3*\ %t\             " File name
-  set statusline+=%1*\ %y\             " File type
+  set statusline+=%3*%(\ ☰\ %)         " 'Lines' icon
+  set statusline+=%l/%L                " Line #/lines
+  set statusline+=\ \|                 " Seperator
+  set statusline+=%(\ %v\ %)           " Column #
+  set statusline+=%4*%=                " Split L & R
+  set statusline+=%3*%(\ %t\ %)        " File name
+  set statusline+=%1*%(\ %y\ %)        " File type
 endif
