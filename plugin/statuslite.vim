@@ -23,7 +23,7 @@ if has('statusline')
   " Always show the status line
   set laststatus=2
 
-  set statusline=%1*\ ☰\ %l/%L      " Lines icon & line #/lines total
+  set statusline=%1*\ ≡\ %l/%L      " Lines icon & line #/lines total
   set statusline+=\:%v\ %4*%(%r\ %) " Column # & readonly warning
   set statusline+=%2*\ %t\          " File name
   set statusline+=%3*%=             " Split L & R
