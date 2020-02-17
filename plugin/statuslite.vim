@@ -28,7 +28,12 @@ if has('statusline')
   set statusline=%1*\ ≡\ %l/%L      " Lines icon & line #/lines total
   set statusline+=\:%v\ %4*%(%r\ %) " Column # & readonly warning
   set statusline+=%7*%2*\ %t\      " File name
-  set statusline+=%8*%3*%=         " Split L & R
+  set statusline+=%8*%3*
+  if (isdirectory(expand('~/.vim/bundle/vim-fugitive/')) ||
+      \ isdirectory(expand('~/.vim/plugged/vim-fugitive/')))
+    set statusline+=\ %{FugitiveStatusline()}
+  endif
+  set statusline+=%=                " Split L & R
   set statusline+=%8*%2*\ %{&ff}\  " File format
   set statusline+=%{&fenc}\         " File encoding
   set statusline+=%7*%1*%(\ %6*%w%5*%h%4*%m%1*%y\ %) " Flags & file type
