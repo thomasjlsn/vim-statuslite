@@ -19,15 +19,17 @@ if has('statusline')
   hi User4 cterm=bold ctermfg=1     ctermbg=234
   hi User5 cterm=bold ctermfg=2     ctermbg=234
   hi User6 cterm=bold ctermfg=5     ctermbg=234
+  hi User7 cterm=bold ctermfg=234  ctermbg=237
+  hi User8 cterm=bold ctermfg=237  ctermbg=240
 
   " Always show the status line
   set laststatus=2
 
   set statusline=%1*\ ≡\ %l/%L      " Lines icon & line #/lines total
   set statusline+=\:%v\ %4*%(%r\ %) " Column # & readonly warning
-  set statusline+=%2*\ %t\          " File name
-  set statusline+=%3*%=             " Split L & R
-  set statusline+=%2*\ %{&ff}\      " File format
+  set statusline+=%7*%2*\ %t\          " File name
+  set statusline+=%8*%3*%=             " Split L & R
+  set statusline+=%8*%2*\ %{&ff}\      " File format
   set statusline+=%{&fenc}\         " File encoding
-  set statusline+=%1*%(\ %6*%w%5*%h%4*%m%1*%y\ %) " Flags & file type
+  set statusline+=%7*%1*%(\ %6*%w%5*%h%4*%m%1*%y\ %) " Flags & file type
 endif
