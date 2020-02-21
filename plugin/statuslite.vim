@@ -26,9 +26,9 @@ hi User1              cterm=bold   ctermfg=254  ctermbg=234
 hi User2              cterm=none   ctermfg=254  ctermbg=237
 hi User3              cterm=none   ctermfg=254  ctermbg=240
 hi SLErrorColor       cterm=bold   ctermfg=232  ctermbg=1
-hi SLGitBranchColor   cterm=bold   ctermfg=2    ctermbg=234
+hi SLGitBranchColor   cterm=bold   ctermfg=2    ctermbg=240
 "  SLModifiedColor    defined in func `SLModified`
-hi SLVirtualenvColor  cterm=bold   ctermfg=5    ctermbg=234
+hi SLVirtualenvColor  cterm=bold   ctermfg=5    ctermbg=240
 
 
 " Functions ================================================================
@@ -102,6 +102,9 @@ set statusline+=%r  " Readonly warning
 set statusline+=%1*\ ≡\ %l/%L       " Lines icon & line #/lines total
 set statusline+=\:%v\               " Column #
 
+" Filename
+set statusline+=%2*\ %t\ %3*\ 
+
 " Environment info
 if executable('virtualenv')
   set statusline+=%#SLVirtualenvColor#
@@ -111,9 +114,6 @@ if executable('git') && PlugExists('vim-fugitive')
   set statusline+=%#SLGitBranchColor#
   set statusline+=%{SLGitBranch(fugitive#head())}
 endif
-
-" Filename
-set statusline+=%2*\ %t\ %3*
 
 " Split L & R
 set statusline+=%=
